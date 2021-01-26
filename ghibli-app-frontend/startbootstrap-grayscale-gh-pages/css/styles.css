@@ -48,6 +48,23 @@
   box-sizing: border-box;
 }
 
+.card {
+  text-align: center;
+  border: grey solid 1px;
+  padding: 1rem;
+  width: 15rem;
+  height: 25rem;
+  display: inline-grid;
+  margin: 1rem 2rem;
+  box-shadow: 3px 4px #e04b52
+}
+
+.movie-poster {
+  justify-self: center;
+  height: 12rem;
+  width: auto;
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -65,7 +82,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #1f6f32
+  color: #1f6f32;
   text-align: left;
   background-color: #1f6f32
   /* background-color: #fff; */
