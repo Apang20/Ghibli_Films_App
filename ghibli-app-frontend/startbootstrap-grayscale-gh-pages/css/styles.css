@@ -48,16 +48,16 @@
   box-sizing: border-box;
 }
 
-.card {
+/* .card {
   text-align: center;
   border: grey solid 1px;
   padding: 1rem;
   width: 15rem;
-  height: 25rem;
+  height: 25rem; */
   /* display: inline-grid; */
-  margin: 1rem 2rem;
+  /* margin: 1rem 2rem;
   box-shadow: 3px 4px #17a2b8
-}
+} */
 
 .movie-poster {
   justify-self: center;
@@ -10091,7 +10091,7 @@ h3 {
     min-width: 992px !important;
   }
 
-  .container {
+  .masthead-container {
     min-width: 992px !important;
   }
 
@@ -10228,7 +10228,7 @@ body {
   /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 75%, #000000 100%), url("../assets/img/bg-masthead.jpg"); */
   background: linear-gradient(to bottom, #2ad8f3 0%, rgb(67 68 74 / 70%) 75%, #116f30 100%), url(../assets/img/bg-masthead.jpg);
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-attachment: scroll;
   background-size: cover;
 }

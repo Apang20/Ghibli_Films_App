@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
 
     def index
         movies = Movie.all
-        render json: movies, only: [:title, :poster_image]
+        render json: movies, only: [:title, :poster_image, :id]
     end
 
     def show
