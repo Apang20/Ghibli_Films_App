@@ -32,6 +32,17 @@ function fetchMovies(){
     })
 }
 
+function fetchCharacter(){
+    fetch(charactersURL)
+    .then((res) => res.json())
+    .then ((characterData) => {
+        qSelect('#masterh').innerHTML = ""
+        characterData.forEach(function(character) {
+            console.log(character)
+        })
+    })
+}
+
 function renderMovie(movie){
     // const body = qSelect('#page-top')
     // const header = qSelect('header')
@@ -47,7 +58,7 @@ function renderMovie(movie){
     //       moviesContainer.className = "container"
 
     let movieCard = create('div')
-        movieCard.className = "card"
+        // movieCard.className = "card"
         movieCard.style = "width: 18rem;"
 
     let movieImage = create('img')
@@ -59,6 +70,9 @@ function renderMovie(movie){
         // movieBox.appendChild(movieCard)
         movieBox.appendChild(movieCard)
         // body.appendChild(section)
+        
+        // let br = document.createElement("br")
+        // movieBox.append(br)
 
         // <section class="about-section text-center" id="about">
         //     <div class="container">
