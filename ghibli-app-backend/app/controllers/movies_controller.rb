@@ -12,4 +12,9 @@ class MoviesController < ApplicationController
         }, :except => [:updated_at, :created_at])
     end
     
+    def destroy
+        Movie.find(params[:id]).destroy 
+    end
+
+
 end 
