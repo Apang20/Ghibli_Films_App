@@ -13,14 +13,57 @@ function fetchMovies(){
     .then((res) => res.json())
     .then ((movieData) => {
         createForm()
+
+        const cardContainer = qSelect('#card-container')
+        cardContainer.innerHTML = ""
+        
         movieData.forEach(function(movie) {
             renderMovie(movie)
         })
     })
+        qSelect("#characters").addEventListener('click', () => {
+            fetchCharacters()
+    })
+
 }
 
 function createForm() {
-    console.log('form')
+    const form = qSelect("#form")
+          form.className = ".container"
+
+    const fgroup = qSelect(".form-group")
+
+    let title = document.createElement('input')
+        title.type = "text"
+        title.className = "form-control"
+        title.placeholder = "Add Movie Title"
+
+    let image = document.createElement('input')
+        image.type = "text"
+        image.className = "form-control"
+        image.placeholder = "Add Movie Poster"
+
+    let year = document.createElement('input')
+        year.type = "text"
+        year.className = "form-control"
+        year.placeholder = "Add Release Year"
+
+    let director = document.createElement('input')
+        director.type = "text"
+        director.className = "form-control"
+        director.placeholder = "Add Movie Director"
+    
+    let description = document.createElement('input')
+        description.type = "text"
+        description.className = "form-control"
+        description.placeholder = "Add Movie Summary"
+
+    let button = document.createElement('button')
+        button.type = "submit"
+        button.classList.add('btn', 'btn-default')
+        button.innerText = "Submit Film"
+
+        fgroup.append(title, image, year, director, description, button)
 }
 
 function renderMovie(movie){
@@ -36,7 +79,6 @@ function renderMovie(movie){
           image.src = movie["poster_image"]
           image.className = "img-thumbnail"
           image.alt = movie.title
-    
 
     const cardBody = create('div')
           cardBody.className = "card-body"
@@ -55,12 +97,15 @@ function renderMovie(movie){
           viewBtn.classList.add("btn", "btn-sm", "btn-outline-secondary")
           viewBtn.innerText = "View"
           
-    const editBtn = create('button')
-          editBtn.classList.add("btn", "btn-sm", "btn-outline-secondary")
-          editBtn.innerText = "Edit"
+    const deleteBtn = create('button')
+          deleteBtn.classList.add("btn", "btn-sm", "btn-outline-secondary")
+          deleteBtn.innerText = "Delete"
 
+          deleteBtn.addEventListener('click', () => {
+            deleteMovie(movie, col)
+          })
 
-    buttonGroup.append(viewBtn, editBtn)
+    buttonGroup.append(viewBtn, deleteBtn)
 
     div.appendChild(buttonGroup)
     
@@ -109,3 +154,11 @@ function showMovie(movie){
 
     
 }
+
+function deleteMovie(movie, col){
+    fetch(moviesURL + movie.id, {method: "DELETE"})
+    .then((res) => res.json())
+    .then (col.remove()) 
+    console.log(movie)
+}
+

@@ -13,9 +13,17 @@ function fetchCharacters(){
     fetch(charactersURL)
     .then((res) => res.json())
     .then ((characterData) => {
+
+      const cardContainer = qSelect('#card-container')
+      cardContainer.innerHTML = ""
+
         characterData.forEach(function(character) {
             renderCharacter(character)
         })
+    })
+
+    qSelect("#films").addEventListener('click', () => {
+          fetchMovies()
     })
 }
 
@@ -51,11 +59,15 @@ function renderCharacter(character){
           viewBtn.classList.add("btn", "btn-sm", "btn-outline-secondary")
           viewBtn.innerText = "View"
           
-    const editBtn = create('button')
-          editBtn.classList.add("btn", "btn-sm", "btn-outline-secondary")
-          editBtn.innerText = "Edit"
+    const deleteBtn = create('button')
+          deleteBtn.classList.add("btn", "btn-sm", "btn-outline-secondary")
+          deleteBtn.innerText = "Delete"
 
-    buttonGroup.append(viewBtn, editBtn)
+          deleteBtn.addEventListener('click', () => {
+                deleteChar(character, col)
+          })
+
+    buttonGroup.append(viewBtn, deleteBtn)
 
     div.appendChild(buttonGroup)
     
@@ -67,3 +79,9 @@ function renderCharacter(character){
         
     cardContainer.appendChild(col)
 }
+
+function deleteChar(character, col){
+    fetch(charactersURL + character.id, {method: "DELETE"})
+    .then((res) => res.json())
+    .then (col.remove()) 
+} 
