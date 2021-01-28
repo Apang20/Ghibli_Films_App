@@ -12,7 +12,7 @@ function fetchMovies(){
     fetch(moviesURL)
     .then((res) => res.json())
     .then ((movieData) => {
-        createForm()
+        showForm()
 
         const cardContainer = qSelect('#card-container')
         cardContainer.innerHTML = ""
@@ -27,43 +27,104 @@ function fetchMovies(){
 
 }
 
-function createForm() {
+function showForm() {
+    const formContainer = qSelect("#form-container")
+          formContainer.className = "container"
+
+          
     const form = qSelect("#form")
-          form.className = ".container"
+          form.innerHTML = ""
+          
+    const titleDiv = create('div')
+          titleDiv.className = "form-group"
+          
+          let title = document.createElement('input')
+              title.type = "text"
+              title.className = "form-control"
+              title.placeholder = "Add Title"
+              title.name = "title"
+          
+          titleDiv.appendChild(title)
 
-    const fgroup = qSelect(".form-group")
+    const imageDiv = create('div')
+          imageDiv.className = "form-group"
 
-    let title = document.createElement('input')
-        title.type = "text"
-        title.className = "form-control"
-        title.placeholder = "Add Movie Title"
+          let image = document.createElement('input')
+              image.type = "text"
+              image.className = "form-control"
+              image.placeholder = "Add Poster Image URL"
+              image.name = "poster"
 
-    let image = document.createElement('input')
-        image.type = "text"
-        image.className = "form-control"
-        image.placeholder = "Add Movie Poster"
+          imageDiv.appendChild(image)
 
-    let year = document.createElement('input')
-        year.type = "text"
-        year.className = "form-control"
-        year.placeholder = "Add Release Year"
+    const yearDiv = create('div')
+          yearDiv.className = "form-group"
+          
+          let year = document.createElement('input')
+              year.type = "text"
+              year.className = "form-control"
+              year.placeholder = "Add Release Year"
+              year.name = "year"
 
-    let director = document.createElement('input')
-        director.type = "text"
-        director.className = "form-control"
-        director.placeholder = "Add Movie Director"
-    
-    let description = document.createElement('input')
-        description.type = "text"
-        description.className = "form-control"
-        description.placeholder = "Add Movie Summary"
+          yearDiv.appendChild(year)
 
-    let button = document.createElement('button')
-        button.type = "submit"
-        button.classList.add('btn', 'btn-default')
-        button.innerText = "Submit Film"
+    const directorDiv = create('div')
+          directorDiv.className = "form-group"
+          
+          let director = document.createElement('input')
+              director.type = "text"
+              director.className = "form-control"
+              director.placeholder = "Add Film Director"
+              director.name = "director"
 
-        fgroup.append(title, image, year, director, description, button)
+          directorDiv.appendChild(director)
+
+    const descriptionDiv = create('div')
+          descriptionDiv.className = "form-group"
+          
+          let description = document.createElement('textarea')
+              description.className = "form-control"
+              description.placeholder = "Add Film Summary"
+              description.name = "summary"
+
+          descriptionDiv.appendChild(description)
+          
+          let button = document.createElement('button')
+              button.type = "submit"
+              button.classList.add('btn', 'btn-default')
+              button.innerText = "Add Ghibli Film!"
+          
+        form.append(titleDiv, imageDiv, yearDiv, directorDiv, descriptionDiv, button)
+
+        form.addEventListener('submit', (event) => {
+              event.preventDefault()
+              addMovie(event.target)
+          })
+        }
+
+function addMovie(formInfo) {
+    const newMovie = {
+        title: formInfo.title.value,
+        ["poster_image"]: formInfo.poster.value,
+        year: formInfo.year.value,
+        director: formInfo.director.value,
+        description: formInfo.summary.value
+    }
+
+    const reqPackage = {
+        headers: {
+            "Content-Type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify(newMovie)
+    }
+
+    fetch(moviesURL, reqPackage)
+        .then(res => res.json())
+        .then(movieObj => {
+            qSelect('#form').reset()
+            renderMovie(movieObj)
+        })
 }
 
 function renderMovie(movie){

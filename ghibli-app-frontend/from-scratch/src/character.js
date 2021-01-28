@@ -13,6 +13,7 @@ function fetchCharacters(){
     fetch(charactersURL)
     .then((res) => res.json())
     .then ((characterData) => {
+      createForm()
 
       const cardContainer = qSelect('#card-container')
       cardContainer.innerHTML = ""
@@ -26,6 +27,74 @@ function fetchCharacters(){
           fetchMovies()
     })
 }
+
+function createForm() {
+      const formContainer = qSelect("#form-container")
+          formContainer.className = "container"
+          
+    const form = qSelect("#form")
+          form.innerHTML = ""
+          
+    const nameDiv = create('div')
+          nameDiv.className = "form-group"
+          
+          let name = document.createElement('input')
+              name.type = "text"
+              name.className = "form-control"
+              name.placeholder = "Add Character Name"
+              name.name = "name"
+          
+          nameDiv.appendChild(name)
+
+    const imageDiv = create('div')
+          imageDiv.className = "form-group"
+
+          let image = document.createElement('input')
+              image.type = "text"
+              image.className = "form-control"
+              image.placeholder = "Add Character Image URL"
+              image.name = "image"
+
+          imageDiv.appendChild(image)
+
+    const speciesDiv = create('div')
+          speciesDiv.className = "form-group"
+
+      const speciesSelect = create('select')
+            speciesSelect.className = 'form-control' 
+            speciesSelect.name = "species"
+
+      let speciesOption = create('option')
+          speciesOption.innerText = "--Add Species--"
+            
+      let humanOption = create('option')
+          humanOption.innerText = "--human--"
+
+      let spiritOption = create('option')
+          spiritOption.innerText = "--spirit--"
+
+      let godOption = create('option')
+          godOption.innerText = "--god--"
+
+      let catOption = create('option')
+          catOption.innerText = "--cat--"
+
+          speciesSelect.append(speciesOption, humanOption, spiritOption, godOption, catOption)
+
+          speciesDiv.appendChild(speciesSelect)
+          
+          let button = document.createElement('button')
+              button.type = "submit"
+              button.classList.add('btn', 'btn-default')
+              button.innerText = "Add Ghibli Film!"
+          
+        form.append(nameDiv, imageDiv, speciesDiv, speciesDiv, button)
+
+        form.addEventListener('submit', (event) => {
+              event.preventDefault()
+              console.log(event.target)
+          })
+  }
 
 function renderCharacter(character){
     const cardContainer = qSelect('#card-container') 
