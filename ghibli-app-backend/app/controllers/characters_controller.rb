@@ -2,7 +2,9 @@ class CharactersController < ApplicationController
 
     def index
         characters = Character.all
-        render json: characters, only: [:name, :image, :id]
+        render json: characters.to_json(:include => {
+            :movie => {:only => [:title, :id]}
+        }, :except => [:updated_at, :created_at, :movie_id])
     end 
 
     def show

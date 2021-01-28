@@ -1,5 +1,7 @@
 const charactersURL = 'http://localhost:3000/characters/'
 
+const moviesArr = []
+
 
 function qSelect(id){
     return document.querySelector(id)
@@ -13,23 +15,55 @@ function fetchCharacters(){
     fetch(charactersURL)
     .then((res) => res.json())
     .then ((characterData) => {
-      createForm()
+      createDiv()
 
       const cardContainer = qSelect('#card-container')
       cardContainer.innerHTML = ""
 
         characterData.forEach(function(character) {
+                  // if (moviesArr.length == 0){
+                  moviesArr.push(character.movie)
+                  // } else {
+                  //       moviesArr.forEach(function(movie){
+                  //             if (movie != character.movie){
+                  //                   moviesArr.push(character.movie)
+                  //             }
+                  //       })
+                  // }
             renderCharacter(character)
         })
     })
+    //console.log(moviesArr)
 
     qSelect("#films").addEventListener('click', () => {
           fetchMovies()
     })
 }
 
+function createDiv(){
+      const revealF = qSelect("#reveal-form")
+
+      let header = create('h4')
+      //     header.className = 'text'
+          header.innerText = "Don't see your favorite character here?"
+
+      let button = create('button')
+          button.classList.add('btn', 'btn-default', 'button')
+          button.innerText = "Create Character"
+
+          button.addEventListener('click', () => {
+            createForm()
+          })
+
+          
+          revealF.append(header, button)
+}
+
 function createForm() {
-      const formContainer = qSelect("#form-container")
+
+qSelect("#reveal-form").innerHTML = ""
+
+    const formContainer = qSelect("#form-container")
           formContainer.className = "container"
           
     const form = qSelect("#form")
@@ -79,22 +113,53 @@ function createForm() {
       let catOption = create('option')
           catOption.innerText = "--cat--"
 
+
           speciesSelect.append(speciesOption, humanOption, spiritOption, godOption, catOption)
 
           speciesDiv.appendChild(speciesSelect)
+
+      const movieDiv = create('div')
+            movieDiv.className = "form-group"
+
+      fetch(moviesURL)
+            .then(resp => resp.json())
+            .then(movies => renderMovieSelect(movies))
+
+      function renderMovieSelect(movies){
+
+            moviesSelect = create('select')
+            moviesSelect.className = 'form-control' 
+            moviesSelect.name = "movies"
+
+            movies.forEach(movie => {
+                  let movieOption = create('option')
+                  movieOption.innerText = movie.title
+
+                  moviesSelect.append(movieOption)
+            })
+            movieDiv.append(moviesSelect)
+      }
+      
+      // debugger
+
+             //movieDiv.appendChild(moviesSelect)
           
           let button = document.createElement('button')
               button.type = "submit"
-              button.classList.add('btn', 'btn-default')
-              button.innerText = "Add Ghibli Film!"
+              button.classList.add('btn', 'btn-default', 'button')
+              button.innerText = "Add Character!"
           
-        form.append(nameDiv, imageDiv, speciesDiv, speciesDiv, button)
+        form.append(nameDiv, imageDiv, speciesDiv, speciesDiv, movieDiv, button)
 
         form.addEventListener('submit', (event) => {
               event.preventDefault()
-              console.log(event.target)
+              //console.log(event.target)
           })
   }
+
+//   function onlyUnique(value, index, self) {
+//       return self.indexOf(value) === index;
+//     }
 
 function renderCharacter(character){
     const cardContainer = qSelect('#card-container') 

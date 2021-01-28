@@ -17,6 +17,7 @@ function fetchMovies(){
         const cardContainer = qSelect('#card-container')
         cardContainer.innerHTML = ""
         
+
         movieData.forEach(function(movie) {
             renderMovie(movie)
         })
