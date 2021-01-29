@@ -29,13 +29,18 @@ function fetchCharacters(){
 
 function createDiv(){
       const revealF = qSelect("#reveal-form")
+            revealF.innerHTML = ""
+
+      const form = qSelect("#form")
+          form.innerHTML = ""
 
       let header = create('h4')
-          header.innerText = "Don't see your favorite character here?"
+          header.innerText = "Don't see your favorite character?"
+          header.className = "fw-light"
 
       let button = create('button')
           button.classList.add('btn', 'btn-default', 'button')
-          button.innerText = "Create Character"
+          button.innerText = "Add a Character!"
 
           button.addEventListener('click', () => {
             createForm()
@@ -47,7 +52,7 @@ function createDiv(){
 
 function createForm() {
 
-qSelect("#reveal-form").innerHTML = ""
+      qSelect("#reveal-form").innerHTML = ""
 
     const formContainer = qSelect("#form-container")
           formContainer.className = "container"
@@ -85,7 +90,7 @@ qSelect("#reveal-form").innerHTML = ""
             speciesSelect.name = "species"
 
       let speciesOption = create('option')
-          speciesOption.innerText = "Add Species"
+          speciesOption.innerText = "--Add Species--"
             
       let humanOption = create('option')
           humanOption.innerText = "human"

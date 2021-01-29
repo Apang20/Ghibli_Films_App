@@ -32,5 +32,5 @@ main {
 
 .totoro {
   background-image: url('https://wallpaperaccess.com/full/156229.jpg');
-  background-size: cover;
+  padding-bottom: 15px;
 }

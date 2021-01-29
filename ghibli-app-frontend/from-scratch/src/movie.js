@@ -12,7 +12,7 @@ function fetchMovies(){
     fetch(moviesURL)
     .then((res) => res.json())
     .then ((movieData) => {
-        showForm()
+        createDiv2()
 
         const cardContainer = qSelect('#card-container')
         cardContainer.innerHTML = ""
@@ -28,7 +28,32 @@ function fetchMovies(){
 
 }
 
+function createDiv2(){
+    const revealF = qSelect("#reveal-form")
+          revealF.innerHTML = ""
+
+    const form = qSelect("#form")
+        form.innerHTML = ""
+
+    let header = create('h4')
+        header.innerText = "Don't see your favorite Ghibli film?"
+        header.className = "fw-light"
+
+    let button = create('button')
+        button.classList.add('btn', 'btn-default', 'button')
+        button.innerText = "Add a Film!"
+
+        button.addEventListener('click', () => {
+          showForm()
+        })
+
+        
+        revealF.append(header, button)
+}
+
 function showForm() {
+    qSelect("#reveal-form").innerHTML = ""
+
     const formContainer = qSelect("#form-container")
           formContainer.className = "container"
 
@@ -92,7 +117,7 @@ function showForm() {
           
           let button = document.createElement('button')
               button.type = "submit"
-              button.classList.add('btn', 'btn-default')
+              button.classList.add('btn', 'btn-default', 'button')
               button.innerText = "Add Ghibli Film!"
           
         form.append(titleDiv, imageDiv, yearDiv, directorDiv, descriptionDiv, button)
