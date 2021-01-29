@@ -2,10 +2,6 @@
     visibility: hidden;
   }
 
-/* h1 {
-  color: rgba(255, 255, 255, 0.5);
-} */
-
 .button {
   background: grey;
   color: white;
@@ -15,11 +11,6 @@
   text-align: center;
 }
 
-/* #reveal-form button { 
-  margin-left: auto;
-  margin-right: auto; 
-} */
-
 #reveal-form {
   text-align: center;
 }
@@ -28,7 +19,7 @@ main {
   background-image: url('https://i.gifer.com/Sk6w.gif');
   background-size: cover;
   background-repeat: no-repeat;
-  height: 700px;
+  height: 600px;
 }
 
 
@@ -38,15 +29,8 @@ main {
   align-items: center;
   justify-content: center;
 }
-/* .container {
-  padding-top: 500px;
-} */
 
-/* section {
-  position: relative;
-  top: 50%;
-} */
-/* 
-.title {
-font-size: bold;
-} */
+.totoro {
+  background-image: url('https://wallpaperaccess.com/full/156229.jpg');
+  background-size: cover;
+}
