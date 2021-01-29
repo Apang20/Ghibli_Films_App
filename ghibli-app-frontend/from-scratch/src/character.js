@@ -1,5 +1,7 @@
 const charactersURL = 'http://localhost:3000/characters/'
 
+let movieId
+
 function qSelect(id){
     return document.querySelector(id)
 }
@@ -16,6 +18,7 @@ function fetchCharacters(){
 
       const cardContainer = qSelect('#card-container')
       cardContainer.innerHTML = ""
+      cardContainer.classList.add("row", "row-cols-1", "row-cols-sm-2", "row-cols-md-3", "g-3")
 
         characterData.forEach(function(character) {
             renderCharacter(character)
@@ -130,7 +133,9 @@ function createForm() {
             movies.forEach(movie => {
                   let movieOption = create('option')
                   movieOption.innerText = `${movie.title}`
-                  movieOption.id = movie.id
+                  movieOption.addEventListener('click', () => {
+                        console.log('click')
+                  })
 
                   moviesSelect.append(movieOption)
             })
@@ -168,12 +173,12 @@ function createForm() {
             body: JSON.stringify(newChar)
       }
       
-      fetch(charactersURL, reqPackage)
-          .then(res => res.json())
-          .then(characterObj => {
-              qSelect('#form').reset()
-              renderCharacter(characterObj)
-          })
+      // fetch(charactersURL, reqPackage)
+      //     .then(res => res.json())
+      //     .then(characterObj => {
+      //         qSelect('#form').reset()
+      //         renderCharacter(characterObj)
+      //     })
   }
 
 function renderCharacter(character){
@@ -207,6 +212,9 @@ function renderCharacter(character){
     const viewBtn = create('button')
           viewBtn.classList.add("btn", "btn-sm", "btn-outline-secondary")
           viewBtn.innerText = "View"
+          viewBtn.addEventListener('click', () => {
+            fetchCharacter(character)
+        })
           
     const deleteBtn = create('button')
           deleteBtn.classList.add("btn", "btn-sm", "btn-outline-secondary")
@@ -228,6 +236,53 @@ function renderCharacter(character){
         
     cardContainer.appendChild(col)
 }
+
+function fetchCharacter(character){
+      fetch(charactersURL + character.id)
+      .then((res) => res.json())
+      .then((characterData) => {
+          showCharacter(characterData)
+      })
+  }
+
+function showCharacter(character){
+
+      const revealF = qSelect("#reveal-form")
+            revealF.innerHTML = ""
+  
+      const cardContainer = qSelect('#card-container')
+          cardContainer.innerHTML = ""
+          cardContainer.className = "text-center"
+  
+      let characterImage = create('img')
+          characterImage.classList.add("img-fluid", "img-thumbnail")
+          characterImage.src = character.image
+  
+      let characterName = create('h2')
+          characterName.innerText = character.name
+          characterName.classList.add("fw-light", "padding")
+  
+      let characterSpecies = create('p')
+          characterSpecies.innerText = `Species: ${character.species}` 
+          characterSpecies.classList.add("fw-light", "padding")
+  
+      let characterMovie = create('p')
+          characterMovie = `Appears In: ${character.movie.title}`
+          characterMovie.className = "fw-light"
+
+      let br = create('br')
+  
+      let button = document.createElement('button')
+          button.classList.add('btn', 'btn-default', 'button')
+          button.innerText = "Back"
+          button.addEventListener('click', () => {
+              fetchCharacters()
+          })
+  
+      cardContainer.append(characterName, characterImage,  characterSpecies, characterMovie, br, button)
+  
+      
+  }
 
 function deleteChar(character, col){
     fetch(charactersURL + character.id, {method: "DELETE"})

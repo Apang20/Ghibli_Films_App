@@ -1,5 +1,7 @@
 const moviesURL = 'http://localhost:3000/movies/'
 
+const movies = []
+
 function qSelect(id){
     return document.querySelector(id)
 }
@@ -16,9 +18,11 @@ function fetchMovies(){
 
         const cardContainer = qSelect('#card-container')
         cardContainer.innerHTML = ""
+        cardContainer.classList.add("row", "row-cols-1", "row-cols-sm-2", "row-cols-md-3", "g-3")
         
 
         movieData.forEach(function(movie) {
+            movies.push(movie)
             renderMovie(movie)
         })
     })
@@ -150,7 +154,14 @@ function addMovie(formInfo) {
         .then(movieObj => {
             qSelect('#form').reset()
             renderMovie(movieObj)
-        })
+        }) 
+        // .catch(function(error) {
+        //     let alert = create('alert')
+        //         alert.classList.add("alert", "alert-danger")
+        //         alert.role = "alert"
+        //         alert.innerText = error.message
+        //     qSelect("#form-container").prepend(alert)
+        // })
 }
 
 function renderMovie(movie){
@@ -183,6 +194,9 @@ function renderMovie(movie){
     const viewBtn = create('button')
           viewBtn.classList.add("btn", "btn-sm", "btn-outline-secondary")
           viewBtn.innerText = "View"
+          viewBtn.addEventListener('click', () => {
+              fetchMovie(movie)
+          })
           
     const deleteBtn = create('button')
           deleteBtn.classList.add("btn", "btn-sm", "btn-outline-secondary")
@@ -215,29 +229,43 @@ function fetchMovie(movie){
 
 function showMovie(movie){
 
-    let movieBox = document.querySelector("#movieBox")
-        movieBox.innerHTML = ""
+    const revealF = qSelect("#reveal-form")
+          revealF.innerHTML = ""
 
-    let movieCard = create('div')
+    const cardContainer = qSelect('#card-container')
+        cardContainer.innerHTML = ""
+        cardContainer.className = "text-center"
 
     let movieImage = create('img')
-        movieImage.className = "card-image-top"
+        movieImage.classList.add("img-fluid", "img-thumbnail")
         movieImage.src = movie.poster_image
+
+    let br = create('br')
 
     let movieTitle = create('h2')
         movieTitle.innerText = movie.title
+        movieTitle.classList.add("fw-light", "padding")
 
-    let movieYear = create('h3')
-        movieYear.innerText = movie.year 
+    let movieYear = create('p')
+        movieYear.innerText = `Release Year: ${movie.year}` 
+        movieYear.className = "fw-light"
 
-    let movieDir = create('h3')
-        movieDir = movie.director
+    let movieDir = create('h2')
+        movieDir = `Director: ${movie.director}`
+        movieDir.className = "fw-light"
 
     let movieDesc = create('p')
         movieDesc.innerText = movie.description 
+        movieDesc.className = "fw-light"
 
-    movieCard.append(movieImage, movieTitle, movieYear, movieDir, movieDesc)
-    movieBox.appendChild(movieCard)
+    let button = document.createElement('button')
+        button.classList.add('btn', 'btn-default', 'button')
+        button.innerText = "Back"
+        button.addEventListener('click', () => {
+            fetchMovies()
+        })
+
+    cardContainer.append(movieTitle, movieImage, br,  movieDir, movieYear, movieDesc, button)
 
     
 }

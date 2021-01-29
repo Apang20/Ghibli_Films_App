@@ -20,17 +20,26 @@ main {
   background-size: cover;
   background-repeat: no-repeat;
   height: 600px;
+  padding-top: 150px;
 }
 
 
 .splash-page {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 
 .totoro {
   background-image: url('https://wallpaperaccess.com/full/156229.jpg');
+  padding-bottom: 15px;
+}
+
+.padding {
+  padding-top: 15px;
+}
+
+.name {
   padding-bottom: 15px;
 }
