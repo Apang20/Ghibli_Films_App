@@ -5,11 +5,14 @@ function qSelect(id){
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+
     qSelect("#films").addEventListener('click', () => {
+        document.querySelector('audio').play()
         showDiv()
         fetchMovies()
     })
     qSelect("#characters").addEventListener('click', () => {
+        document.querySelector('audio').play()
         showDiv()
         fetchCharacters()
     })
