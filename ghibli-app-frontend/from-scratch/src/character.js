@@ -173,12 +173,12 @@ function createForm() {
             body: JSON.stringify(newChar)
       }
       
-      // fetch(charactersURL, reqPackage)
-      //     .then(res => res.json())
-      //     .then(characterObj => {
-      //         qSelect('#form').reset()
-      //         renderCharacter(characterObj)
-      //     })
+      fetch(charactersURL, reqPackage)
+          .then(res => res.json())
+          .then(characterObj => {
+              qSelect('#form').reset()
+              renderCharacter(characterObj)
+          })
   }
 
 function renderCharacter(character){

@@ -15,10 +15,10 @@ class CharactersController < ApplicationController
     end
 
     def create
-        movie = Movie.find(params[:title])
-        byebug
+        movie = Movie.find_by(title: params[:title])
+        # byebug
         character = Character.new(character_params)
-        charater.movie_id = movie.id
+        character.movie_id = movie.id
         character.save
         render json: character
     end

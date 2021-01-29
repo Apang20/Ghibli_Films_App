@@ -19,18 +19,18 @@ castle = Movie.create(title: "Castle in the Sky", poster_image:"https://i.etsyst
 
 #Characters
 
-chihiro = Character.create(name: "Chihiro (Sen)", image: "https://s1.zerochan.net/Ogino.Chihiro.600.87743.jpg", species: "human", movie_id: spirited.id)
-kikiwitch = Character.create(name: "Kiki", image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fyouandmie.files.wordpress.com%2F2014%2F09%2Fkikis-delivery-service.jpg&f=1&nofb=1", species: "human", movie_id: kiki.id)
-san = Character.create(name: "San", image: "https://static.wikia.nocookie.net/studio-ghibli/images/2/22/San-0.jpg/revision/latest?cb=20200620033852", species: "human", movie_id: mononoke.id)
-howl = Character.create(name: "Howl", image: "https://static.wikia.nocookie.net/howlscastle/images/2/26/Howl_with_black_hair.jpg/revision/latest/scale-to-width-down/340?cb=20120605141024", species: "wizard", movie_id: howlsmc.id)
-totoro_char = Character.create(name: "Totoro", image: "https://i.redd.it/ko8rxxqv1yty.jpg", species: "spirit", movie_id: totoro.id)
-pazu = Character.create(name: "Pazu", image: "https://dev.mangajam.com/wp-content/uploads/part418/how_draw_pazu_laputa_11.jpg", species: "human", movie_id: castle.id)
-jiji = Character.create(name: "Jiji", image: "https://ae01.alicdn.com/kf/HTB1.0IqQVXXXXb_XpXXq6xXFXXXK/Japanese-Anime-Toys-45-65cm-Kikis-Delivery-Service-Jiji-Cat-Plush-Backpack-Soft-Plush-School-Bag.jpg", species: "cat", movie_id: kiki.id)
+chihiro = Character.create(name: "Chihiro (Sen)", image: "https://media.giphy.com/media/KxfYSCk4uTdxC/giphy.gif", species: "human", movie_id: spirited.id)
+kikiwitch = Character.create(name: "Kiki", image: "https://media.giphy.com/media/h0uYtwIV9liVy/giphy.gif", species: "human", movie_id: kiki.id)
+san = Character.create(name: "San", image: "https://media.giphy.com/media/5PhLTi47Eosp7skNDM/giphy.gif", species: "human", movie_id: mononoke.id)
+howl = Character.create(name: "Howl", image: "https://media.giphy.com/media/qTCKtDMh9wS9a/giphy.gif", species: "wizard", movie_id: howlsmc.id)
+totoro_char = Character.create(name: "Totoro", image: "https://media.giphy.com/media/rR2AWZ3ip77r2/giphy.gif", species: "spirit", movie_id: totoro.id)
+pazu = Character.create(name: "Pazu", image: "https://media.giphy.com/media/3ohzdU8o8EjTHiwnf2/giphy.gif", species: "human", movie_id: castle.id)
+jiji = Character.create(name: "Jiji", image: "https://media.giphy.com/media/rGxJWjwGsPkCk/giphy.gif", species: "cat", movie_id: kiki.id)
 
-sophie = Character.create(name: "Sophie", image: "https://static.wikia.nocookie.net/howlscastle/images/c/c1/Sophie_Hatter.jpeg/revision/latest/scale-to-width-down/340?cb=20151222210402", species: "human", movie_id: howlsmc.id)
-noface = Character.create(name: "No Face", image: "https://static.wikia.nocookie.net/studio-ghibli/images/9/9d/No-Face_infobox.png/revision/latest?cb=20200908135515", species: "spirit", movie_id: spirited.id)
-haku = Character.create(name: "Haku", image: "https://static.wikia.nocookie.net/studio-ghibli/images/8/89/Haku-2.png/revision/latest?cb=20201008131345", species: "spirit", movie_id: spirited.id)
-kodama = Character.create(name: "Kodama", image: "https://i.pinimg.com/originals/2a/2a/3d/2a2a3dc21200c6025a7e2f209b818926.jpg", species: "spirit", movie_id: mononoke.id)
+sophie = Character.create(name: "Sophie", image: "https://media.giphy.com/media/NciYDs9YFXihy/giphy.gif", species: "human", movie_id: howlsmc.id)
+noface = Character.create(name: "No Face", image: "https://media.giphy.com/media/ayMW3eqvuP00o/giphy.gif", species: "spirit", movie_id: spirited.id)
+haku = Character.create(name: "Haku", image: "https://media.giphy.com/media/cpNi1qojEMCjK/giphy.gif", species: "spirit", movie_id: spirited.id)
+kodama = Character.create(name: "Kodama", image: "https://media.giphy.com/media/v38BvJSInBpII/giphy.gif", species: "spirit", movie_id: mononoke.id)
  
 
 #Chihiro hobbies: ["cleaning", "making new friends", "flying with Haku", "making deals with witches"]
