@@ -155,13 +155,6 @@ function addMovie(formInfo) {
             qSelect('#form').reset()
             renderMovie(movieObj)
         }) 
-        // .catch(function(error) {
-        //     let alert = create('alert')
-        //         alert.classList.add("alert", "alert-danger")
-        //         alert.role = "alert"
-        //         alert.innerText = error.message
-        //     qSelect("#form-container").prepend(alert)
-        // })
 }
 
 function renderMovie(movie){
