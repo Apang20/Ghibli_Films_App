@@ -1,5 +1,5 @@
 # README
-Ghibli-App
+App: Ghibli Films & Characters
 
 Collaborated with Kirsty to create a single page Javascript with Rails application that provides fans to customize and organize their favorite films/characters: 
 
