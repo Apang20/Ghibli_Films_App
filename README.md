@@ -1,4 +1,5 @@
- ![image](https://user-images.githubusercontent.com/62185859/112554854-13659500-8d95-11eb-97d9-8811c1ff80b1.png)
+![image](https://user-images.githubusercontent.com/62185859/112555271-dea60d80-8d95-11eb-9b37-96640aeb8964.png)
+
 # Ghibli Films & Characters
 
 ### Project Collaboration
