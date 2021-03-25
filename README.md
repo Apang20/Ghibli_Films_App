@@ -1,4 +1,5 @@
-# Ghibli Films & Characters ![image](https://user-images.githubusercontent.com/62185859/112554854-13659500-8d95-11eb-97d9-8811c1ff80b1.png)
+ ![image](https://user-images.githubusercontent.com/62185859/112554854-13659500-8d95-11eb-97d9-8811c1ff80b1.png)
+# Ghibli Films & Characters
 
 ### Project Collaboration
 - Avelon Pang
