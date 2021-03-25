@@ -1,5 +1,5 @@
 # Ghibli Films & Characters 
-### Project By:
+### Collaboration
 - Avelon Pang
 - Kirsty Brewster
 
