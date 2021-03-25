@@ -13,7 +13,7 @@ An application that provides fans to customize and organize their favorite films
 
 ## Demo
 
-- [2 min Demo Video](https://www.youtube.com/watch?v=fzeetxQXB9c&list=PLFqQfEnCEJVce2riSm-OIBbySpzLQzCrD&index=6)
+- [Short Demo Video](https://www.youtube.com/watch?v=fzeetxQXB9c&list=PLFqQfEnCEJVce2riSm-OIBbySpzLQzCrD&index=6)
 
 ## About 
 - Single Page Application 
