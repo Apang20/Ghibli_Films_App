@@ -23,7 +23,7 @@ An application that provides fans to customize and organize their favorite films
 - Backend: API built with Ruby on Rails
 - Please mute audio if you do not want to hear music on app
 
-## Users Can...
+## Users Story
 - Browse all characters and films
 - View specific character or film descriptions
 - Delete Character(s) and Film(s)
