@@ -1,5 +1,3 @@
-
-
 # Ghibli Films & Characters 
 ### Project By:
 - Avelon Pang
